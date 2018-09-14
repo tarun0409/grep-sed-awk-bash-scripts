@@ -7,7 +7,7 @@ then
 fi
 if [ -d "$s_dir" ]
 then
-  for file_entry in "$1"/*
+  for file_entry in "$s_dir"/*
   do
     if [ ! -d "$file_entry" ]
     then
