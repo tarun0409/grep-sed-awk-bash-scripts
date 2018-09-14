@@ -11,8 +11,13 @@ then
   do
     if [ ! -d "$file_entry" ]
     then
-      filename=$(basename -- "$file_entry")
-      extension="${filename##*.}"
+      basename=$file_entry; extension=
+      while [[ $basename = ?*.* &&
+               ( ${basename##*.} = [A-Za-z]* || ${basename##*.} = 7z ) ]]; do
+        extension=${basename##*.}.$extension
+        basename=${basename%.*}
+      done
+      extension=${extension%.}
       if [[ "$s_ext" != "all" ]]
       then
         found=0
