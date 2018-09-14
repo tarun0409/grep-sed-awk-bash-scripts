@@ -1,0 +1,2 @@
+awk ' BEGIN{ curr_topper="";curr_max=0;curr_mark=0; } { curr_mark = $2 + $3 + $4 + $5; if (curr_mark > curr_max){ curr_max = curr_mark; curr_topper=$1 } } END{ print curr_topper } ' marks.txt
+awk ' BEGIN{ class_avg=0;n=0;tot_marks=0;} { tot_marks=$3+$4+$5;class_avg=class_avg+tot_marks; s_marks[$1]=tot_marks; n++; } END{ class_avg=class_avg/n; for(key in s_marks){ if(s_marks[key]>class_avg){ print key; }  } } ' marks.txt

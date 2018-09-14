@@ -1,0 +1,1 @@
+awk ' BEGIN{ id=0; printf "[\n\t";} { id++; if(id!=1){printf ","} printf "{\n\"id\" : \"%d\",\n",id; printf "\"Name\" : \"";for(i=2;i<=(NF-2);i++) { printf $(i); if(i!=(NF-2)) { printf " ";} }  printf "\",\n\"Year\" : \"%s\",\n",substr($(NF-1),2,4); printf "\"Rating\" : \"%s\"",$(NF); printf "\n}"; } END{printf "\n]"} ' imdb-top-250.txt > imdb-top-250.json
